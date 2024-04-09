@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: zoukme.in
+  threads:
+    virtual:
+      enabled: true

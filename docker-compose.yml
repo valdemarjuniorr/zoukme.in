@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      - "POSTGRES_DB=zoukmein"
+      - "POSTGRES_PASSWORD=zoukmein"
+      - "POSTGRES_USER=zoukmein"
+    ports:
+      - "5432"
