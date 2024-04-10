@@ -1,6 +1,13 @@
 spring:
   application:
     name: zoukme.in
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:postgresql://localhost:5432/zoukmein
+    username: zoukmein
+    password: zoukmein
   threads:
     virtual:
       enabled: true

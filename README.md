@@ -3,7 +3,7 @@
 ## Description
 
 ## Features
-- Java 22
+- Java 21
 - Spring Boot 3.3.0-M3
 - PostgresSQL
 
