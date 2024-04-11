@@ -13,14 +13,19 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "person")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
@@ -29,19 +34,19 @@ public abstract class Person {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_gen")
   @SequenceGenerator(name = "person_gen", sequenceName = "person_seq")
   @Column(name = "id", nullable = false)
-  private Long id;
+  protected Long id;
 
   @Column(name = "name", nullable = false)
-  private String name;
+  protected String name;
 
   @Column(name = "email", nullable = false)
-  private String email;
+  protected String email;
 
   @Column(name = "mobile", nullable = false)
-  private String mobile;
+  protected String mobile;
 
-  @OneToOne private SocialMedia socialMedia;
+  @OneToOne protected SocialMedia socialMedia;
 
   @OneToMany(mappedBy = "person")
-  private List<Photo> photos;
+  protected List<Photo> photos;
 }

@@ -13,8 +13,8 @@ public class EventService {
 
   private final EventRepository repository;
 
-  public Event create(Event event) {
-    return repository.save(event);
+  public void create(Event event) {
+    repository.save(event);
   }
 
   public Optional<Event> findBy(Long id) {
