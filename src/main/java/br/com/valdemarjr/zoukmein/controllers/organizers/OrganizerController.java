@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/organizers")
 public class OrganizerController {
 
-    private final OrganizerService service;
+  private final OrganizerService service;
 
-    @GetMapping("/{id}")
-    OrganizerResponse findOrganizerBy(@PathVariable Long id) {
-        return service.findBy(id)
-                .map(OrganizerResponse::from)
-                .orElseThrow(OrganizerNotFoundException::new);
-    }
+  @GetMapping("/{id}")
+  OrganizerResponse findOrganizerBy(@PathVariable Long id) {
+    return service
+        .findBy(id)
+        .map(OrganizerResponse::from)
+        .orElseThrow(OrganizerNotFoundException::new);
+  }
 
-    @PostMapping
-    void create(@RequestBody OrganizerRequest request) {
-        service.create(request.toEntity());
-    }
-
+  @PostMapping
+  void create(@RequestBody OrganizerRequest request) {
+    service.create(request.toEntity());
+  }
 }
