@@ -5,7 +5,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ArtistTest {
+class PersonTest {
 
   private static final String PHOTO_URL = "http://localhost:8080/photo.jpg";
 

@@ -1,4 +1,4 @@
-package br.com.valdemarjr.zoukmein.controllers;
+package br.com.valdemarjr.zoukmein.controllers.events;
 
 import br.com.valdemarjr.zoukmein.exceptions.EventNotFoundException;
 import br.com.valdemarjr.zoukmein.services.EventService;

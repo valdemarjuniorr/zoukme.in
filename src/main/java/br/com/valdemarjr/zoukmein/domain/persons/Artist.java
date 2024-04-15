@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.util.CollectionUtils;
 
 @Getter
 @Setter
@@ -22,7 +21,4 @@ public class Artist extends Person {
   @Column(name = "description", nullable = false)
   private String description;
 
-  public String firstPhoto() {
-    return !CollectionUtils.isEmpty(this.photos) ? this.photos.getFirst().getUrl() : "";
-  }
 }

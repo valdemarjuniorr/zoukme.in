@@ -2,6 +2,7 @@ package br.com.valdemarjr.zoukmein.domain.persons;
 
 import br.com.valdemarjr.zoukmein.domain.SocialMedia;
 import br.com.valdemarjr.zoukmein.domain.assets.Photo;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.util.CollectionUtils;
 
 @Getter
 @Setter
@@ -45,8 +47,13 @@ public abstract class Person {
   @Column(name = "mobile", nullable = false)
   protected String mobile;
 
-  @OneToOne protected SocialMedia socialMedia;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  protected SocialMedia socialMedia;
 
-  @OneToMany(mappedBy = "person")
+  @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
   protected List<Photo> photos;
+
+  public String firstPhoto() {
+    return !CollectionUtils.isEmpty(this.photos) ? this.photos.getFirst().getUrl() : "";
+  }
 }

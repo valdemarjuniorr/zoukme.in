@@ -1,4 +1,4 @@
-package br.com.valdemarjr.zoukmein.controllers;
+package br.com.valdemarjr.zoukmein.controllers.events;
 
 import br.com.valdemarjr.zoukmein.domain.SocialMedia;
 import br.com.valdemarjr.zoukmein.domain.address.Address;
