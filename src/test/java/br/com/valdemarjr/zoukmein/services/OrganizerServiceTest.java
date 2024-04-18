@@ -52,4 +52,11 @@ class OrganizerServiceTest {
     verify(repository).findById(ID);
     Assertions.assertThat(organizer).isNotEmpty();
   }
+
+  @Test
+  void delete() {
+    service.delete(ID);
+
+    verify(repository).deleteById(ID);
+  }
 }

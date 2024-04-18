@@ -4,6 +4,7 @@ import br.com.valdemarjr.zoukmein.controllers.responses.ArtistResponse;
 import br.com.valdemarjr.zoukmein.exceptions.ArtistNotFoundException;
 import br.com.valdemarjr.zoukmein.services.ArtistService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +26,12 @@ public class ArtistController {
   }
 
   @PostMapping
-  void create(@RequestBody ArtistRequest request)  {
+  void create(@RequestBody ArtistRequest request) {
     service.create(request.toEntity());
+  }
 
+  @DeleteMapping("/{id}")
+  void delete(@PathVariable Long id) {
+    service.delete(id);
   }
 }

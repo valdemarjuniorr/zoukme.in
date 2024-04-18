@@ -21,4 +21,8 @@ public class OrganizerService {
   public Optional<Organizer> findBy(Long id) {
     return repository.findById(id);
   }
+
+  public void delete(Long id) {
+    repository.deleteById(id);
+  }
 }

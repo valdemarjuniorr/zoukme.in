@@ -20,4 +20,8 @@ public class ArtistService {
   public void create(Artist artist) {
     repository.save(artist);
   }
+
+  public void delete(Long id) {
+    repository.deleteById(id);
+  }
 }

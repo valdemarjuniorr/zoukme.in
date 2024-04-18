@@ -47,10 +47,12 @@ public abstract class Person {
   @Column(name = "mobile", nullable = false)
   protected String mobile;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   protected SocialMedia socialMedia;
 
-  @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
+  @OneToMany(
+      mappedBy = "person",
+      cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   protected List<Photo> photos;
 
   public String firstPhoto() {

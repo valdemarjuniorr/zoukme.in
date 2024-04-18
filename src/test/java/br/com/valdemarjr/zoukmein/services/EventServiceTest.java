@@ -4,6 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import br.com.valdemarjr.zoukmein.domain.address.State;
 import br.com.valdemarjr.zoukmein.domain.events.Event;
 import br.com.valdemarjr.zoukmein.repositories.EventRepository;
 import org.assertj.core.api.Assertions;
@@ -12,7 +13,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Pageable;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,5 +56,35 @@ class EventServiceTest {
 
     verify(repository).findById(ID);
     Assertions.assertThat(event).hasValue(eventMock);
+  }
+
+  @Test
+  void findByState() {
+    var eventMock = mock(Event.class);
+    var pageable = mock(Pageable.class);
+    when(repository.findByAddressState(State.SC, pageable)).thenReturn(List.of(eventMock));
+
+    var events = service.findByState(State.SC, pageable);
+
+    verify(repository).findByAddressState(State.SC, pageable);
+    Assertions.assertThat(events).containsExactly(eventMock);
+  }
+
+  @Test
+  void findByStateEmpty() {
+    var pageable = mock(Pageable.class);
+    when(repository.findByAddressState(State.SC, pageable)).thenReturn(Collections.emptyList());
+
+    var events = service.findByState(State.SC, pageable);
+
+    verify(repository).findByAddressState(State.SC, pageable);
+    Assertions.assertThat(events).isEmpty();
+  }
+
+  @Test
+  void delete() {
+    service.delete(ID);
+
+    verify(repository).deleteById(ID);
   }
 }

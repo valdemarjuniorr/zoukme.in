@@ -3,6 +3,7 @@ package br.com.valdemarjr.zoukmein.controllers.organizers;
 import br.com.valdemarjr.zoukmein.exceptions.OrganizerNotFoundException;
 import br.com.valdemarjr.zoukmein.services.OrganizerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,5 +29,10 @@ public class OrganizerController {
   @PostMapping
   void create(@RequestBody OrganizerRequest request) {
     service.create(request.toEntity());
+  }
+
+  @DeleteMapping("/{id}")
+  void delete(@PathVariable Long id) {
+    service.delete(id);
   }
 }

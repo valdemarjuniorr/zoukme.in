@@ -14,12 +14,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -54,7 +54,7 @@ public class Event {
   @Enumerated(EnumType.STRING)
   private EventType type;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(nullable = false)
   private Organizer organizer;
 
