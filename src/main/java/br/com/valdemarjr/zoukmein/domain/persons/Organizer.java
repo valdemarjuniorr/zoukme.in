@@ -20,5 +20,4 @@ public class Organizer extends Person {
 
   @Column(nullable = false)
   private String description;
-
 }

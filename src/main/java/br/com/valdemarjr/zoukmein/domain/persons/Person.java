@@ -38,13 +38,13 @@ public abstract class Person {
   @Column(name = "id", nullable = false)
   protected Long id;
 
-  @Column(name = "name", nullable = false)
+  @Column(nullable = false)
   protected String name;
 
-  @Column(name = "email", nullable = false)
+  @Column(nullable = false)
   protected String email;
 
-  @Column(name = "mobile", nullable = false)
+  @Column(nullable = false)
   protected String mobile;
 
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

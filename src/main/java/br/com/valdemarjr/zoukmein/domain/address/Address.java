@@ -24,31 +24,28 @@ import lombok.Setter;
 @Table(name = "address")
 public class Address {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_gen")
-	@SequenceGenerator(name = "address_gen", sequenceName = "address_seq")
-	@Column(name = "id", nullable = false)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_gen")
+  @SequenceGenerator(name = "address_gen", sequenceName = "address_seq")
+  @Column(nullable = false)
+  private Long id;
 
-	@Column(name = "street")
-	private String street;
+  @Column(nullable = false)
+  private String street;
 
-	@Column(name = "state")
-	@Enumerated(EnumType.STRING)
-	private State state;
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
+  private State state;
 
-	@Column(name = "city")
-	private String city;
+  @Column(nullable = false)
+  private String city;
 
-	@Column(name = "zip_code")
-	private String zipCode;
+  @Column private String zipCode;
 
-	@Column(name = "number")
-	private String number;
+  @Column(nullable = false)
+  private String number;
 
-	public String fullAddress() {
-		return street + ", " + number + " - " + city + "/" + state + " - " + zipCode;
-	}
+  public String fullAddress() {
+    return street + ", " + number + " - " + city + "/" + state + " - " + zipCode;
+  }
 }
-
-

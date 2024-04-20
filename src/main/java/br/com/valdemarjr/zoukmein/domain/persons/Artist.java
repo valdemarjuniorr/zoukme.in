@@ -18,7 +18,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "artist")
 public class Artist extends Person {
 
-  @Column(name = "description", nullable = false)
+  @Column(nullable = false)
   private String description;
-
 }

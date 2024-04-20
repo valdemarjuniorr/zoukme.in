@@ -27,7 +27,7 @@ public class Photo {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "photo_gen")
   @SequenceGenerator(name = "photo_gen", sequenceName = "photo_seq")
-  @Column(name = "id", nullable = false)
+  @Column(nullable = false)
   private Long id;
 
   @Column private String description;
