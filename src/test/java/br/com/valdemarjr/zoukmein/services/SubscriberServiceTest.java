@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class SubscriberServiceTest {
 
-  private static final long ID = 1L;
+  private static final Long ID = 1L;
 
   @InjectMocks private SubscriberService subscriberService;
 

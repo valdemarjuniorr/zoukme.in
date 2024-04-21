@@ -41,4 +41,10 @@ public class Subscriber {
   @CreationTimestamp
   @Column(nullable = false)
   private LocalDateTime createdAt;
+
+  public Subscriber(String name, String email) {
+    this.name = name;
+    this.email = email;
+    this.active = false;
+  }
 }
