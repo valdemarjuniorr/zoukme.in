@@ -1,6 +1,5 @@
 package br.com.valdemarjr.zoukmein.controllers.events;
 
-import br.com.valdemarjr.zoukmein.controllers.participants.ParticipantRequest;
 import br.com.valdemarjr.zoukmein.domain.events.Event;
 import br.com.valdemarjr.zoukmein.domain.persons.Participant;
 import br.com.valdemarjr.zoukmein.services.EventParticipantService;

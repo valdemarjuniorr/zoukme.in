@@ -39,4 +39,13 @@ class ParticipantServiceTest {
 
     Mockito.verify(repository).findById(ID);
   }
+
+  @Test
+  void create() {
+    var participant = Mockito.mock(Participant.class);
+
+    service.create(participant);
+
+    Mockito.verify(repository).save(participant);
+  }
 }

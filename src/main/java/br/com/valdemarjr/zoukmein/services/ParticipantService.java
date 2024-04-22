@@ -15,4 +15,8 @@ public class ParticipantService {
   public Optional<Participant> findBy(Long id) {
     return repository.findById(id);
   }
+
+  public void create(Participant participant) {
+    repository.save(participant);
+  }
 }

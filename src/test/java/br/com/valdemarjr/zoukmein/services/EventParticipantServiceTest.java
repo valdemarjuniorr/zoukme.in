@@ -8,7 +8,7 @@ import br.com.valdemarjr.zoukmein.exceptions.EventNotFoundException;
 import br.com.valdemarjr.zoukmein.exceptions.ParticipantNotFoundException;
 import br.com.valdemarjr.zoukmein.repositories.EventParticipantRepository;
 import java.util.Optional;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -34,8 +34,8 @@ class EventParticipantServiceTest {
   void eventNotFound() {
     Mockito.when(eventService.findBy(ID)).thenReturn(Optional.empty());
 
-    Assertions.assertThrows(
-        EventNotFoundException.class, () -> service.decide(event, participant, Decision.MAYBE));
+    Assertions.assertThatThrownBy(() -> service.decide(event, participant, Decision.MAYBE))
+        .isInstanceOf(EventNotFoundException.class);
 
     Mockito.verifyNoInteractions(participantService, repository);
   }
@@ -45,9 +45,8 @@ class EventParticipantServiceTest {
     Mockito.when(eventService.findBy(ID)).thenReturn(Optional.of(event));
     Mockito.when(participantService.findBy(ID)).thenReturn(Optional.empty());
 
-    Assertions.assertThrows(
-        ParticipantNotFoundException.class,
-        () -> service.decide(event, participant, Decision.GOING));
+    Assertions.assertThatThrownBy(() -> service.decide(event, participant, Decision.GOING))
+        .isInstanceOf(ParticipantNotFoundException.class);
 
     Mockito.verifyNoInteractions(repository);
   }
@@ -63,6 +62,6 @@ class EventParticipantServiceTest {
 
     service.decide(event, participant, Decision.GOING);
 
-    Mockito.verify(repository).save(captor.getValue());
+    Mockito.verify(repository).save(captor.capture());
   }
 }
