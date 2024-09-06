@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    List<Event> findByAddressState(State state, Pageable pageable);
+    List<Event> findByAddressStateOrderByStartDateAsc(State state, Pageable pageable);
 }

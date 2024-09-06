@@ -3,8 +3,10 @@ package br.com.valdemarjr.zoukmein.services;
 import br.com.valdemarjr.zoukmein.domain.persons.Artist;
 import br.com.valdemarjr.zoukmein.repositories.ArtistRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,5 +25,9 @@ public class ArtistService {
 
   public void delete(Long id) {
     repository.deleteById(id);
+  }
+
+  public List<Artist> findAllBy(Pageable pageable) {
+    return repository.findAll(pageable).getContent();
   }
 }

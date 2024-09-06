@@ -62,22 +62,22 @@ class EventServiceTest {
   void findByState() {
     var eventMock = mock(Event.class);
     var pageable = mock(Pageable.class);
-    when(repository.findByAddressState(State.SC, pageable)).thenReturn(List.of(eventMock));
+    when(repository.findByAddressStateOrderByStartDateAsc(State.SC, pageable)).thenReturn(List.of(eventMock));
 
     var events = service.findByState(State.SC, pageable);
 
-    verify(repository).findByAddressState(State.SC, pageable);
+    verify(repository).findByAddressStateOrderByStartDateAsc(State.SC, pageable);
     Assertions.assertThat(events).containsExactly(eventMock);
   }
 
   @Test
   void findByStateEmpty() {
     var pageable = mock(Pageable.class);
-    when(repository.findByAddressState(State.SC, pageable)).thenReturn(Collections.emptyList());
+    when(repository.findByAddressStateOrderByStartDateAsc(State.SC, pageable)).thenReturn(Collections.emptyList());
 
     var events = service.findByState(State.SC, pageable);
 
-    verify(repository).findByAddressState(State.SC, pageable);
+    verify(repository).findByAddressStateOrderByStartDateAsc(State.SC, pageable);
     Assertions.assertThat(events).isEmpty();
   }
 

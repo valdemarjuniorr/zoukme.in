@@ -25,7 +25,7 @@ public class EventService {
   }
 
   public List<Event> findByState(State state, Pageable pageable) {
-    return repository.findByAddressState(state, pageable);
+    return repository.findByAddressStateOrderByStartDateAsc(state, pageable);
   }
 
   public void delete(Long id) {
